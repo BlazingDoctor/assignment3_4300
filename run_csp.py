@@ -9,6 +9,7 @@ if __name__ == "__main__":
     csp = parse_cs4300(sys.argv[1])
     any_sol = False
     
+    #alternate below: 
     #solver_function = solve_mrv 
     solver_function = solve_backtracking
 
