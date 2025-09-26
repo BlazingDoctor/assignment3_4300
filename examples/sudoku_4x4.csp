@@ -1,0 +1,49 @@
+#NAME: Sudoku 4x4
+#DESC: A 4x4 Sudoku puzzle. Variables are V_rc for row r, col c.
+
+# Puzzle:
+#   . 8 . 3
+#   7 . 5 .
+#   . 3 . 2
+#   . 4 . 1
+
+VARS:
+  # Row 1
+  V_11: [1,2,3,4,5,6,7,8,9]
+  V_12: [8]
+  V_13: [1,2,3,4,5,6,7,8,9]
+  V_14: [3]
+  # Row 2
+  V_21: [7]
+  V_22: [1,2,3,4,5,6,7,8,9]
+  V_23: [5]
+  V_24: [1,2,3,4,5,6,7,8,9]
+  # Row 3
+  V_31: [1,2,3,4,5,6,7,8,9]
+  V_32: [3]
+  V_33: [1,2,3,4,5,6,7,8,9]
+  V_34: [2]
+  # Row 4
+  V_41: [1,2,3,4,5,6,7,8,9]
+  V_42: [4]
+  V_43: [1,2,3,4,5,6,7,8,9]
+  V_44: [1]
+
+CONS:
+  # Row constraints
+  alldiff(V_11, V_12, V_13, V_14)
+  alldiff(V_21, V_22, V_23, V_24)
+  alldiff(V_31, V_32, V_33, V_34)
+  alldiff(V_41, V_42, V_43, V_44)
+
+  # Column constraints
+  alldiff(V_11, V_21, V_31, V_41)
+  alldiff(V_12, V_22, V_32, V_42)
+  alldiff(V_13, V_23, V_33, V_43)
+  alldiff(V_14, V_24, V_34, V_44)
+
+  # 2x2 box constraints
+  alldiff(V_11, V_12, V_21, V_22) # Top-left box
+  alldiff(V_13, V_14, V_23, V_24) # Top-right box
+  alldiff(V_31, V_32, V_41, V_42) # Bottom-left box
+  alldiff(V_33, V_34, V_43, V_44) # Bottom-right box
